@@ -132,7 +132,7 @@ h3 {
 }
 
 /* MERCHANT + ITEM CARDS */
-.merchant, .item {
+.merchant, .item, .coupon {
   align-items: center;
   background-color: #fff;
   border-radius: 8px;
@@ -145,18 +145,18 @@ h3 {
 }
 
 .merchant:hover,
-.item:hover {
+.item:hover, .coupon:hover {
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
   transform: translateY(-5px);
 }
 
-.items-view {
+.items-view, .coupons-view {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
 }
 
-.item {
+.item, .coupon {
   flex-direction: column;
   text-align: center;
   width: 30%;
