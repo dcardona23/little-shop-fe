@@ -236,23 +236,42 @@ function getMerchantCoupons(event) {
   let merchantId = event.target.closest("article").id.split('-')[1]
   console.log("Merchant ID:", merchantId)
 
-  fetchData(`merchants/${merchantId}`)
-  .then(couponData => {
+  fetchData(`merchants/${merchantId}/coupons`)
+  .then( response => {
+    const couponData = response.data
     console.log("Coupon data from fetch:", couponData)
     displayMerchantCoupons(couponData);
   })
 }
 
 function displayMerchantCoupons(coupons) {
+  console.log("coupons: ", coupons)
+
   show([couponsView])
   hide([merchantsView, itemsView])
+  console.log("Type of coupons: ", typeof coupons)
 
-  couponsView.innerHTML = `
-    <p>Coupon data will go here.</p>
-  `
+  const couponHTML = coupons.map((coupon) => {
+    var discount
+
+    if (coupon.attributes.dollar_off) {
+      discount = `$${coupon.attributes.dollar_off} off`
+    } else {
+      discount = `${coupon.attributes.percent_off}% off`
+    }
+
+    return `
+    <article class="coupon">
+      <h3>${coupon.attributes.name}</h3>
+      <p>${coupon.attributes.code}</p>
+      <p>Discount: ${discount}</p>
+    </article>
+`}).join('')
+    couponsView.innerHTML = couponHTML
 }
 
 //Helper Functions
+
 function show(elements) {
   elements.forEach(element => {
     element.classList.remove('hidden')
