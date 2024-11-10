@@ -245,10 +245,10 @@ function getMerchantCoupons(event) {
 }
 
 function displayMerchantCoupons(coupons) {
-  console.log("coupons: ", coupons)
-
   show([couponsView])
-  hide([merchantsView, itemsView])
+  hide([merchantsView, itemsView, addNewButton])
+  showingText.innerText = `All Coupons for Merchant #${coupons[0].attributes.merchant_id}`
+
   console.log("Type of coupons: ", typeof coupons)
 
   const couponHTML = coupons.map((coupon) => {
