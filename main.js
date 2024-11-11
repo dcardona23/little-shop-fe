@@ -143,7 +143,7 @@ function showMerchantsView() {
   addRemoveActiveNav(merchantsNavButton, itemsNavButton)
   addNewButton.dataset.state = 'merchant'
   show([merchantsView, addNewButton])
-  hide([itemsView])
+  hide([itemsView, couponsView])
   displayMerchants(merchants)
 }
 
@@ -264,7 +264,7 @@ function displayMerchantCoupons(coupons) {
     <article class="coupon">
       <h3>${coupon.attributes.name}</h3>
       <p>${coupon.attributes.code}</p>
-      <p>Discount: ${discount}</p>
+      <p>${discount}</p>
     </article>
 `}).join('')
     couponsView.innerHTML = couponHTML
