@@ -45,7 +45,6 @@ Promise.all([fetchData('merchants'), fetchData('items')])
     displayMerchants(merchants)
   })
   .catch(err => {
-    console.log('catch error: ', err)
   })
 
 // Merchant CRUD Functions
@@ -234,12 +233,10 @@ function displayMerchantItems(event) {
 
 function getMerchantCoupons(event) {
   let merchantId = event.target.closest("article").id.split('-')[1]
-  console.log("Merchant ID:", merchantId)
 
   fetchData(`merchants/${merchantId}/coupons`)
   .then( response => {
     const couponData = response.data
-    console.log("Coupon data from fetch:", couponData)
     displayMerchantCoupons(couponData);
   })
 }
@@ -247,9 +244,12 @@ function getMerchantCoupons(event) {
 function displayMerchantCoupons(coupons) {
   show([couponsView])
   hide([merchantsView, itemsView, addNewButton])
-  showingText.innerText = `All Coupons for Merchant #${coupons[0].attributes.merchant_id}`
 
-  console.log("Type of coupons: ", typeof coupons)
+  if (coupons.length > 0) {
+    showingText.innerText = `All Coupons for Merchant #${coupons[0].attributes.merchant_id}`
+  } else {
+    showingText.innerText = `No Coupons Available for This Merchant`
+  }
 
   const couponHTML = coupons.map((coupon) => {
     var discount
