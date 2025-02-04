@@ -4,7 +4,6 @@
 
 ### Abstract:
 Building off a previous group project, I developed a coupon management system with a Ruby on Rails backend API. The application allows merchants to create, activate, and deactivate coupons, and begins mapping out the functionality to apply coupons to merchant invoices. The system solves the problem of complex coupon management for e-commerce platforms by providing a robust API for coupon operations, including filtering, activation rules, and usage tracking. 
-Building off a previous group project, I developed a coupon management system with a Ruby on Rails backend API. The application allows merchants to create, activate, and deactivate coupons, and begins mapping out the functionality to apply coupons to merchant invoices. The system solves the problem of complex coupon management for e-commerce platforms by providing a robust API for coupon operations, including filtering, activation rules, and usage tracking. 
 
 ### Installation Instructions:
 - Clone the repository
